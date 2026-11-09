@@ -1,0 +1,318 @@
+rem M98B
+rem Weapon CON File for Srifle_M98B (3138)
+
+ObjectTemplate.create GenericFireArm Srifle_M98B
+ObjectTemplate.assetId 3138
+ObjectTemplate.saveInSeparateFile 1
+ObjectTemplate.weaponsItemType WITSniperRifle
+
+ObjectTemplate.geometry sr_m98b_custom
+
+rem Fallback geometry
+ObjectTemplate.fallbackGeometry 
+ObjectTemplate.fallbackAnimationSystem1p 
+ObjectTemplate.fallbackAnimationSystem3p 
+
+GeometryTemplate.setSubGeometryLodDistance 1 0 5
+GeometryTemplate.setSubGeometryLodDistance 1 1 15
+GeometryTemplate.compressVertexData 1
+GeometryTemplate.maxTextureRepeat 16
+rem GeometryTemplate.hasAdditiveAlpha 1
+rem Animation
+ObjectTemplate.AnimationSystem1p Objects\soldiers\character1p\Animations\SR_M98B\AnimationSystem1p.inc
+ObjectTemplate.AnimationSystem3p Objects\soldiers\character3p\Animations\SR_M98B\AnimationSystem3p.inc
+rem ObjectTemplate.AnimationSystem3PFemale FemaleAnimation
+
+ObjectTemplate.createComponent WeaponHud
+ObjectTemplate.weaponHud.weaponIcon Ingame\Weapons\weapon3138.tga
+ObjectTemplate.weaponHud.selectIcon Ingame\Weapons\weapon3138.tga
+ObjectTemplate.weaponHud.notSelectedIcon Ingame\Weapons\weapon3138n.tga
+ObjectTemplate.weaponHud.guiIndex 1
+ObjectTemplate.weaponHud.altGuiIndex 23
+ObjectTemplate.weaponHud.hasRangeFinder 1
+ObjectTemplate.weaponHud.addShowOnCamMode 3
+ObjectTemplate.weaponHud.useCartridgeBar 1
+ObjectTemplate.weaponHud.disableOnSprint 1
+ObjectTemplate.weaponHud.descrString DESCRIPTION_WEAPON_SRIFLE_M98B
+ObjectTemplate.weaponHud.ignoreTargetDistance 1
+ObjectTemplate.weaponHud.hudName "ASSAULT_Custom_Item_3138"
+
+ObjectTemplate.createComponent SingleFireComp
+ObjectTemplate.fire.roundsPerMinute 45
+ObjectTemplate.fire.addFireRate 0
+ObjectTemplate.fire.burstSize 0
+ObjectTemplate.fire.batchSize 1
+ObjectTemplate.fire.projectileStartPositionStand 0/0/0
+ObjectTemplate.fire.projectileStartPositionCrouch 0/0/0
+ObjectTemplate.fire.maxProjectilesInWorld 10
+ObjectTemplate.fire.busyUntilButtonRelease 1
+ObjectTemplate.fire.alwaysFireFromWeapon 1
+ObjectTemplate.fire.fireInCameraDof 1
+ObjectTemplate.fire.fireCompleteDelay 0
+ObjectTemplate.fire.fireOnEnable 0
+ObjectTemplate.fire.criticalHitChance 0
+ObjectTemplate.fire.criticalHitDamage 0
+
+ObjectTemplate.fire.allowZoomOnRof 1
+
+ObjectTemplate.createComponent DefaultAmmoComp
+ObjectTemplate.ammo.ammoType 1
+ObjectTemplate.ammo.nrOfMags 3
+ObjectTemplate.ammo.magSize 6
+ObjectTemplate.ammo.reloadAmount 0
+ObjectTemplate.ammo.reloadTime 4.4
+ObjectTemplate.ammo.forceWeaponSwitchWhenNoAmmo 0
+ObjectTemplate.ammo.reloadWithoutPlayer 0
+ObjectTemplate.ammo.autoReload 0
+ObjectTemplate.ammo.toggleWhenNoAmmo 1
+ObjectTemplate.ammo.AllowReplenish 1
+
+ObjectTemplate.createComponent SoldierBasedRecoilComp
+ObjectTemplate.recoil.hasRecoilForce 1
+ObjectTemplate.recoil.goBackOnRecoil 0
+ObjectTemplate.recoil.recoilForceUp CRD_UNIFORM/7.05/5/0
+ObjectTemplate.recoil.recoilForceLeftRight CRD_UNIFORM/-2.1/2.1/0
+ObjectTemplate.recoil.recoilGraphFrameCount 15
+ObjectTemplate.recoil.recoilGraphExponent 6
+ObjectTemplate.recoil.recoilGraphTotalMovement 6
+ObjectTemplate.recoil.zoomModifier 0.33
+
+ObjectTemplate.createComponent SoldierDeviationComp
+ObjectTemplate.deviation.minDev 2
+ObjectTemplate.deviation.subProjectileDev 0
+ObjectTemplate.deviation.DevModZoom 0.65
+ObjectTemplate.deviation.minDevModZoom 0
+ObjectTemplate.deviation.setFireDev 0 0 0
+ObjectTemplate.deviation.setTurnDev 0 0 0 0
+ObjectTemplate.deviation.setSpeedDev 2 0.2 0.1 0.15
+ObjectTemplate.deviation.setMiscDev 9 9 0.4
+ObjectTemplate.deviation.devModStand 2
+ObjectTemplate.deviation.devModCrouch 1.5
+ObjectTemplate.deviation.syncDev 1
+
+
+ObjectTemplate.createComponent DefaultSoundComp
+ObjectTemplate.createComponent DefaultAnimationComp
+ObjectTemplate.animation.useShiftAnimation 1
+ObjectTemplate.animation.shiftDelay 2
+
+
+
+
+ObjectTemplate.createComponent DefaultZoomComp
+ObjectTemplate.zoom.zoomDelay 0.25
+ObjectTemplate.zoom.zoomLod 0
+ObjectTemplate.zoom.applyDoFOnZoom 0
+ObjectTemplate.zoom.hideOnZoom 1
+ObjectTemplate.zoom.zoomOutAfterFire 1
+ObjectTemplate.zoom.addZoomFactor 0 0
+ObjectTemplate.zoom.addZoomFactor 0.291 0
+ObjectTemplate.zoom.addZoomFactor 0.19 0
+ObjectTemplate.zoom.disableMuzzleWhenZoomed 1
+ObjectTemplate.zoom.useZoomFineTuning 1
+ObjectTemplate.zoom.zoomFineTuneSteps 3
+ObjectTemplate.zoom.zoomFineTuningNeedsUnlock 0
+
+
+
+
+
+ObjectTemplate.addTemplate e_muzz_type95
+ObjectTemplate.setPosition 0/0.06310/1.27176
+
+
+ObjectTemplate.addTemplate e_shellejection_rifle
+ObjectTemplate.setPosition 0/0.07273/0.48737
+ObjectTemplate.setRotation 0/0/0
+
+ObjectTemplate.projectileTemplate Srifle_M98B_Projectile
+ObjectTemplate.keepProjectiles 0
+ObjectTemplate.velocity 475
+ObjectTemplate.itemIndex 1
+ObjectTemplate.altItemIndex 10
+ObjectTemplate.delayToUse 0.4
+ObjectTemplate.weaponsItemType WITSniperRifle
+ObjectTemplate.allowEmoteAnimation 1
+ObjectTemplate.inheritParentSpeedSoldier 1
+ObjectTemplate.inheritParentSpeedVehicle 1
+ObjectTemplate.isDefaultWeapon 1
+ObjectTemplate.unstealthOnDeploy 0
+
+
+ObjectTemplate.create GenericProjectile Srifle_M98B_Projectile
+ObjectTemplate.addTemplate e_sniper_trail
+ObjectTemplate.createNotInGrid 1
+ObjectTemplate.createdInEditor 1
+
+ObjectTemplate.createComponent DefaultCollisionComp
+ObjectTemplate.collision.hasCollisionEffect 1
+
+
+
+ObjectTemplate.createComponent DefaultProjSoundComp
+
+
+
+ObjectTemplate.createComponent DefaultPenetrateComp
+ObjectTemplate.penetrate.allowSolidPenetration 0
+ObjectTemplate.penetrate.allowLiquidPenetration 1
+
+
+ObjectTemplate.gravityModifier 2
+ObjectTemplate.hasMobilePhysics 1
+ObjectTemplate.hasCollisionPhysics 1
+ObjectTemplate.physicsType Point
+ObjectTemplate.collisionGroups 8
+ObjectTemplate.material 42
+
+
+ObjectTemplate.addTemplate e_sniper_trail
+
+ObjectTemplate.timeToLive CRD_NONE/0.566/0/0
+ObjectTemplate.material 42
+ObjectTemplate.hasOnTimeEffect 1
+ObjectTemplate.tracerScaler 8
+ObjectTemplate.maxTracerScaler 0.25
+ObjectTemplate.minTracerScaler 1
+ObjectTemplate.tracerSizeModifier 0.2
+ObjectTemplate.tracerTemplate P_tracer2_eu
+ObjectTemplate.tracerConvergeDistance -1
+ObjectTemplate.tracerInterval 0
+ObjectTemplate.localPredictOnClient 1
+ObjectTemplate.initialMinDamage 67
+ObjectTemplate.mediumMinDamage 57
+ObjectTemplate.longMinDamage 50
+ObjectTemplate.initialMaxDamage 73
+ObjectTemplate.mediumMaxDamage 63
+ObjectTemplate.longMaxDamage 54
+ObjectTemplate.mediumDistance 35
+ObjectTemplate.longDistance 75
+ObjectTemplate.damageOwner 1
+ObjectTemplate.activeDefenseEnabled 1
+
+
+
+rem ObjectTemplate.activeSafe Sound S_Srifle_M98B_Fire3P
+rem ObjectTemplate.soundFilename "Sound\Assault\Weaponry\Handheld\SN_M98B\SN_M98B_fire_3p.wav"
+
+ObjectTemplate.activeSafe Sound S_Srifle_M98B_Fire1P
+ObjectTemplate.lowSamples 2147483647
+ObjectTemplate.mediumSamples 2147483647
+ObjectTemplate.soundFilename "Sound\Assault\Weaponry\Handheld\SN_M98B\SN_M98B_fire_1p.wav"
+ObjectTemplate.loopCount 0
+ObjectTemplate.is3dSound 0
+ObjectTemplate.stopType 2
+ObjectTemplate.volume 1
+ObjectTemplate.pitch 1
+ObjectTemplate.reverbLevel 1
+ObjectTemplate.pitchEnvelope 0/1/0.9/1.1/1/1/0/0.97/1.03/
+ObjectTemplate.volumeEnvelope 0/1/0/1/1/1/0/0.9/1/
+ObjectTemplate.position 0/0/0.500329
+ObjectTemplate.minDistance 3
+ObjectTemplate.halfVolumeDistance 8
+ObjectTemplate.soundRadius 0.5
+ObjectTemplate.onlyLoadIfGenericFirearmEquipped 1
+
+ObjectTemplate.activeSafe Sound S_Srifle_M98B_Fire3P
+ObjectTemplate.lowSamples 2147483647
+ObjectTemplate.mediumSamples 2147483647
+ObjectTemplate.soundFilename "Sound\Assault\Weaponry\Handheld\SN_M98B\SN_M98B_fire_3p.wav"
+ObjectTemplate.loopCount 0
+ObjectTemplate.is3dSound 1
+ObjectTemplate.stopType 2
+ObjectTemplate.volume 1
+ObjectTemplate.pitch 1
+ObjectTemplate.reverbLevel 1
+ObjectTemplate.pitchEnvelope 0/1/0.9/1.1/1/1/0/0.97/1.03/
+ObjectTemplate.volumeEnvelope 0/1/0/1/1/1/0/0.9/1/
+ObjectTemplate.position 0/0/0.500329
+ObjectTemplate.minDistance 7
+ObjectTemplate.halfVolumeDistance 30
+ObjectTemplate.soundRadius 0.5
+
+
+
+ObjectTemplate.activeSafe Sound S_Srifle_M98B_Reload1P
+ObjectTemplate.lowSamples 2147483647
+ObjectTemplate.mediumSamples 2147483647
+ObjectTemplate.soundFilename "Sound\Assault\Weaponry\Handheld\SN_M98B\SN_M98B_reload_1p3p.wav,Sound\Assault\Weaponry\Handheld\SN_M98B\SN_M98B_bolt_1p.wav"
+ObjectTemplate.loopCount 0
+ObjectTemplate.is3dSound 0
+ObjectTemplate.stopType 1
+ObjectTemplate.volume 1
+ObjectTemplate.pitch 1
+ObjectTemplate.reverbLevel 1
+ObjectTemplate.position 0/0/0.183854
+ObjectTemplate.minDistance 0.5
+ObjectTemplate.halfVolumeDistance 1
+ObjectTemplate.onlyLoadIfGenericFirearmEquipped 1
+
+ObjectTemplate.activeSafe Sound S_Srifle_M98B_Reload3P
+ObjectTemplate.lowSamples 2147483647
+ObjectTemplate.mediumSamples 2147483647
+ObjectTemplate.soundFilename "Sound\Assault\Weaponry\Handheld\SN_M98B\SN_M98B_reload_1p3p.wav,Sound\Assault\Weaponry\Handheld\SN_M98B\SN_M98B_bolt_1p.wav"
+ObjectTemplate.loopCount 0
+ObjectTemplate.is3dSound 1
+ObjectTemplate.stopType 1
+ObjectTemplate.volume 1
+ObjectTemplate.pitch 1
+ObjectTemplate.reverbLevel 1
+ObjectTemplate.position 0/0/0.183854
+ObjectTemplate.minDistance 0.5
+ObjectTemplate.halfVolumeDistance 1
+
+
+ObjectTemplate.activeSafe Sound S_Srifle_M98B_Deploy1P
+ObjectTemplate.lowSamples 2147483647
+ObjectTemplate.mediumSamples 2147483647
+ObjectTemplate.soundFilename "Sound\Assault\Weaponry\Handheld\SN_M95\SN_M95_deploy_1p3p.wav"
+ObjectTemplate.loopCount 1
+ObjectTemplate.is3dSound 0
+ObjectTemplate.stopType 0
+ObjectTemplate.volume 0.7
+ObjectTemplate.pitch 0.98
+ObjectTemplate.reverbLevel 1
+ObjectTemplate.minDistance 0.5
+ObjectTemplate.halfVolumeDistance 1
+ObjectTemplate.onlyLoadIfGenericFirearmEquipped 1
+
+ObjectTemplate.activeSafe Sound S_Srifle_M98B_Deploy3P
+ObjectTemplate.lowSamples 2147483647
+ObjectTemplate.mediumSamples 2147483647
+ObjectTemplate.soundFilename "Sound\Assault\Weaponry\Handheld\SN_M95\SN_M95_deploy_1p3p.wav"
+ObjectTemplate.loopCount 1
+ObjectTemplate.is3dSound 1
+ObjectTemplate.stopType 0
+ObjectTemplate.volume 0.7
+ObjectTemplate.pitch 0.98
+ObjectTemplate.reverbLevel 1
+ObjectTemplate.minDistance 0.5
+ObjectTemplate.halfVolumeDistance 1
+
+ObjectTemplate.activeSafe Sound S_Srifle_M98B_CriticalShotFire
+ObjectTemplate.modifiedByUser nfe
+ObjectTemplate.soundFilename "Sound\West\Weaponry\Common\Critical\West_SFX_Common_Critical_Shot_Fire_3P.wav"
+ObjectTemplate.loopCount 0
+ObjectTemplate.is3dSound 1
+ObjectTemplate.stopType 1
+ObjectTemplate.volume 0.8
+ObjectTemplate.pitch 1
+ObjectTemplate.reverbLevel 1
+ObjectTemplate.minDistance 3
+ObjectTemplate.halfVolumeDistance 8
+ObjectTemplate.soundRadius 0.5
+
+ObjectTemplate.activeSafe Sound S_Srifle_M98B_CriticalShotHit
+ObjectTemplate.lowSamples 2147483647
+ObjectTemplate.mediumSamples 2147483647
+ObjectTemplate.soundFilename "Sound\West\Weaponry\Common\Critical\West_SFX_Common_Critical_Shot_Hit_3P.wav"
+ObjectTemplate.loopCount 0
+ObjectTemplate.is3dSound 0
+ObjectTemplate.stopType 1
+ObjectTemplate.volume 1
+ObjectTemplate.pitch 1
+ObjectTemplate.pan 0.5
+ObjectTemplate.reverbLevel 1
+ObjectTemplate.volumeEnvelope 0/1/0/1/1/1/0/0.9/1/
+ObjectTemplate.minDistance 1.5
+

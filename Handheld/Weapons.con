@@ -1,0 +1,10 @@
+ObjectTemplate.create ItemContainer Weapon_ParachuteLauncher
+ObjectTemplate.addTemplate ParachuteLauncher
+
+
+ObjectTemplate.create ItemContainer Weapon_ThrowBackGrenade
+ObjectTemplate.addTemplate Grenade_ThrowBack
+
+ 
+
+include Weapons.tweak

@@ -1,0 +1,310 @@
+rem MP5
+rem Weapon CON File for SMG_MP5_Default (3047)
+
+ObjectTemplate.create GenericFireArm SMG_MP5_Default
+ObjectTemplate.assetId 3047
+ObjectTemplate.saveInSeparateFile 1
+ObjectTemplate.weaponsItemType WITSubMachineGun
+
+ObjectTemplate.geometry smg_mp5_custom
+
+rem Fallback geometry
+ObjectTemplate.fallbackGeometry 
+ObjectTemplate.fallbackAnimationSystem1p 
+ObjectTemplate.fallbackAnimationSystem3p 
+
+GeometryTemplate.setSubGeometryLodDistance 1 0 5
+GeometryTemplate.setSubGeometryLodDistance 1 1 15
+GeometryTemplate.compressVertexData 1
+GeometryTemplate.maxTextureRepeat 16
+rem GeometryTemplate.hasAdditiveAlpha 1
+rem Animation
+ObjectTemplate.AnimationSystem1p Objects\soldiers\character1p\Animations\SMG_MP5\AnimationSystem1p.inc
+ObjectTemplate.AnimationSystem3p Objects\soldiers\character3p\Animations\SMG_MP5\AnimationSystem3p.inc
+rem ObjectTemplate.AnimationSystem3PFemale FemaleAnimation
+
+ObjectTemplate.createComponent WeaponHud
+ObjectTemplate.weaponHud.weaponIcon Ingame\Weapons\weapon3047.tga
+ObjectTemplate.weaponHud.selectIcon Ingame\Weapons\weapon3047.tga
+ObjectTemplate.weaponHud.notSelectedIcon Ingame\Weapons\weapon3047n.tga
+ObjectTemplate.weaponHud.guiIndex 4
+ObjectTemplate.weaponHud.altGuiIndex 0
+ObjectTemplate.weaponHud.hasRangeFinder 1
+ObjectTemplate.weaponHud.addShowOnCamMode 3
+ObjectTemplate.weaponHud.useCartridgeBar 1
+ObjectTemplate.weaponHud.disableOnSprint 1
+ObjectTemplate.weaponHud.descrString DESCRIPTION_WEAPON_SMG_MP5_DEFAULT
+ObjectTemplate.weaponHud.ignoreTargetDistance 1
+ObjectTemplate.weaponHud.hudName "ASSAULT_Custom_Item_3047"
+
+ObjectTemplate.createComponent SingleFireComp
+ObjectTemplate.fire.roundsPerMinute 900
+ObjectTemplate.fire.addFireRate 2
+ObjectTemplate.fire.burstSize 0
+ObjectTemplate.fire.batchSize 1
+ObjectTemplate.fire.projectileStartPositionStand 0/0/0
+ObjectTemplate.fire.projectileStartPositionCrouch 0/0/0
+ObjectTemplate.fire.maxProjectilesInWorld 10
+ObjectTemplate.fire.busyUntilButtonRelease 0
+ObjectTemplate.fire.alwaysFireFromWeapon 1
+ObjectTemplate.fire.fireInCameraDof 1
+ObjectTemplate.fire.fireCompleteDelay 0
+ObjectTemplate.fire.fireOnEnable 0
+ObjectTemplate.fire.criticalHitChance 0
+ObjectTemplate.fire.criticalHitDamage 0
+
+ObjectTemplate.fire.allowZoomOnRof 1
+
+ObjectTemplate.createComponent DefaultAmmoComp
+ObjectTemplate.ammo.ammoType 1
+ObjectTemplate.ammo.nrOfMags 4
+ObjectTemplate.ammo.magSize 24
+ObjectTemplate.ammo.reloadAmount 0
+ObjectTemplate.ammo.reloadTime 4.8
+ObjectTemplate.ammo.forceWeaponSwitchWhenNoAmmo 0
+ObjectTemplate.ammo.reloadWithoutPlayer 0
+ObjectTemplate.ammo.autoReload 0
+ObjectTemplate.ammo.toggleWhenNoAmmo 1
+ObjectTemplate.ammo.AllowReplenish 1
+
+ObjectTemplate.createComponent SoldierBasedRecoilComp
+ObjectTemplate.recoil.hasRecoilForce 1
+ObjectTemplate.recoil.goBackOnRecoil 0
+ObjectTemplate.recoil.recoilForceUp CRD_UNIFORM/0.7/0.35/0
+ObjectTemplate.recoil.recoilForceLeftRight CRD_UNIFORM/-0.45/0.45/0
+ObjectTemplate.recoil.recoilGraphFrameCount 2
+ObjectTemplate.recoil.recoilGraphExponent 6
+ObjectTemplate.recoil.recoilGraphTotalMovement 0.6
+ObjectTemplate.recoil.zoomModifier 0.7
+
+ObjectTemplate.createComponent SoldierDeviationComp
+ObjectTemplate.deviation.minDev 0.5
+ObjectTemplate.deviation.subProjectileDev 0
+ObjectTemplate.deviation.DevModZoom 0.83
+ObjectTemplate.deviation.minDevModZoom 0.35
+ObjectTemplate.deviation.setFireDev 3.3 0.36 0.135
+ObjectTemplate.deviation.setTurnDev 0 0 0 0
+ObjectTemplate.deviation.setSpeedDev 0.5 0.05 0.05 0.15
+ObjectTemplate.deviation.setMiscDev 6 6 0.13
+ObjectTemplate.deviation.devModStand 1.35
+ObjectTemplate.deviation.devModCrouch 1.05
+ObjectTemplate.deviation.syncDev 1
+
+
+ObjectTemplate.createComponent DefaultSoundComp
+ObjectTemplate.createComponent DefaultAnimationComp
+
+
+
+
+ObjectTemplate.createComponent DefaultZoomComp
+ObjectTemplate.zoom.zoomDelay 0.05
+ObjectTemplate.zoom.zoomLod 0
+ObjectTemplate.zoom.applyDoFOnZoom 0
+ObjectTemplate.zoom.hideOnZoom 0
+ObjectTemplate.zoom.zoomOutAfterFire 0
+ObjectTemplate.zoom.addZoomFactor 0 0
+ObjectTemplate.zoom.addZoomFactor 0.95 0
+ObjectTemplate.zoom.disableMuzzleWhenZoomed 1
+ObjectTemplate.zoom.useZoomFineTuning 0
+ObjectTemplate.zoom.zoomFineTuneSteps 10
+
+
+
+
+
+ObjectTemplate.addTemplate e_muzz_smg
+ObjectTemplate.setPosition 0/0.04151/0.66230
+
+
+ObjectTemplate.addTemplate e_shellejection_556
+ObjectTemplate.setPosition 0/0.06114/0.37752
+ObjectTemplate.setRotation 0/0/0
+
+ObjectTemplate.projectileTemplate SMG_MP5_Default_Projectile
+ObjectTemplate.keepProjectiles 10
+ObjectTemplate.velocity 700
+ObjectTemplate.itemIndex 1
+ObjectTemplate.altItemIndex 10
+ObjectTemplate.delayToUse 0.4
+ObjectTemplate.weaponsItemType WITSubMachineGun
+ObjectTemplate.allowEmoteAnimation 1
+ObjectTemplate.inheritParentSpeedSoldier 0
+ObjectTemplate.inheritParentSpeedVehicle 1
+ObjectTemplate.isDefaultWeapon 1
+ObjectTemplate.unstealthOnDeploy 0
+
+
+ObjectTemplate.create GenericProjectile SMG_MP5_Default_Projectile
+
+ObjectTemplate.createComponent DefaultCollisionComp
+ObjectTemplate.collision.hasCollisionEffect 1
+
+
+
+ObjectTemplate.createComponent DefaultProjSoundComp
+
+
+
+ObjectTemplate.createComponent DefaultPenetrateComp
+ObjectTemplate.penetrate.allowSolidPenetration 0
+ObjectTemplate.penetrate.allowLiquidPenetration 1
+
+
+ObjectTemplate.gravityModifier 1
+ObjectTemplate.hasMobilePhysics 1
+ObjectTemplate.hasCollisionPhysics 1
+ObjectTemplate.physicsType Point
+ObjectTemplate.collisionGroups 8
+ObjectTemplate.material 38
+
+
+
+ObjectTemplate.timeToLive CRD_NONE/0.4/0/0
+ObjectTemplate.material 38
+ObjectTemplate.hasOnTimeEffect 1
+ObjectTemplate.tracerScaler 60
+ObjectTemplate.maxTracerScaler 0.25
+ObjectTemplate.minTracerScaler 1
+ObjectTemplate.tracerSizeModifier 0.2
+ObjectTemplate.tracerTemplate p_tracer2_eu
+ObjectTemplate.tracerConvergeDistance -1
+ObjectTemplate.tracerInterval 0
+ObjectTemplate.localPredictOnClient 1
+ObjectTemplate.initialMinDamage 21
+ObjectTemplate.mediumMinDamage 16
+ObjectTemplate.longMinDamage 11
+ObjectTemplate.initialMaxDamage 23
+ObjectTemplate.mediumMaxDamage 20
+ObjectTemplate.longMaxDamage 15
+ObjectTemplate.mediumDistance 22
+ObjectTemplate.longDistance 35
+ObjectTemplate.damageOwner 1
+ObjectTemplate.activeDefenseEnabled 1
+
+
+
+rem ObjectTemplate.activeSafe Sound S_SMG_MP5_Default_Fire3P
+rem ObjectTemplate.soundFilename "Sound\Assault\Weaponry\Handheld\SMG_MP5\SMG_MP5_fire_3p.wav"
+
+ObjectTemplate.activeSafe Sound S_SMG_MP5_Default_Fire1P
+ObjectTemplate.lowSamples 2147483647
+ObjectTemplate.mediumSamples 2147483647
+ObjectTemplate.soundFilename "Sound\Assault\Weaponry\Handheld\SMG_MP5\SMG_MP5_fire_1p.wav"
+ObjectTemplate.loopCount 0
+ObjectTemplate.is3dSound 0
+ObjectTemplate.stopType 2
+ObjectTemplate.volume 1
+ObjectTemplate.pitch 1
+ObjectTemplate.reverbLevel 1
+ObjectTemplate.pitchEnvelope 0/1/0.9/1.1/1/1/0/0.97/1.03/
+ObjectTemplate.volumeEnvelope 0/1/0/1/1/1/0/0.9/1/
+ObjectTemplate.position 0/0/0.500329
+ObjectTemplate.minDistance 3
+ObjectTemplate.halfVolumeDistance 8
+ObjectTemplate.soundRadius 0.5
+ObjectTemplate.onlyLoadIfGenericFirearmEquipped 1
+
+ObjectTemplate.activeSafe Sound S_SMG_MP5_Default_Fire3P
+ObjectTemplate.lowSamples 2147483647
+ObjectTemplate.mediumSamples 2147483647
+ObjectTemplate.soundFilename "Sound\Assault\Weaponry\Handheld\SMG_MP5\SMG_MP5_fire_3p.wav"
+ObjectTemplate.loopCount 0
+ObjectTemplate.is3dSound 1
+ObjectTemplate.stopType 2
+ObjectTemplate.volume 1
+ObjectTemplate.pitch 1
+ObjectTemplate.reverbLevel 1
+ObjectTemplate.pitchEnvelope 0/1/0.9/1.1/1/1/0/0.97/1.03/
+ObjectTemplate.volumeEnvelope 0/1/0/1/1/1/0/0.9/1/
+ObjectTemplate.position 0/0/0.500329
+ObjectTemplate.minDistance 7
+ObjectTemplate.halfVolumeDistance 30
+ObjectTemplate.soundRadius 0.5
+
+
+
+ObjectTemplate.activeSafe Sound S_SMG_MP5_Default_Reload1P
+ObjectTemplate.lowSamples 2147483647
+ObjectTemplate.mediumSamples 2147483647
+ObjectTemplate.soundFilename "Sound\Assault\Weaponry\Handheld\SMG_MP5\SMG_MP5_reload_1p3p.wav"
+ObjectTemplate.loopCount 0
+ObjectTemplate.is3dSound 0
+ObjectTemplate.stopType 1
+ObjectTemplate.volume 1
+ObjectTemplate.pitch 1
+ObjectTemplate.reverbLevel 1
+ObjectTemplate.position 0/0/0.183854
+ObjectTemplate.minDistance 0.5
+ObjectTemplate.halfVolumeDistance 1
+ObjectTemplate.onlyLoadIfGenericFirearmEquipped 1
+
+ObjectTemplate.activeSafe Sound S_SMG_MP5_Default_Reload3P
+ObjectTemplate.lowSamples 2147483647
+ObjectTemplate.mediumSamples 2147483647
+ObjectTemplate.soundFilename "Sound\Assault\Weaponry\Handheld\SMG_MP5\SMG_MP5_reload_1p3p.wav"
+ObjectTemplate.loopCount 0
+ObjectTemplate.is3dSound 1
+ObjectTemplate.stopType 1
+ObjectTemplate.volume 1
+ObjectTemplate.pitch 1
+ObjectTemplate.reverbLevel 1
+ObjectTemplate.position 0/0/0.183854
+ObjectTemplate.minDistance 0.5
+ObjectTemplate.halfVolumeDistance 1
+
+
+ObjectTemplate.activeSafe Sound S_SMG_MP5_Default_Deploy1P
+ObjectTemplate.lowSamples 2147483647
+ObjectTemplate.mediumSamples 2147483647
+ObjectTemplate.soundFilename "Sound\Assault\Weaponry\Handheld\SMG_MP5\SMG_MP5_deploy_1p3p.wav"
+ObjectTemplate.loopCount 1
+ObjectTemplate.is3dSound 0
+ObjectTemplate.stopType 0
+ObjectTemplate.volume 0.7
+ObjectTemplate.pitch 0.98
+ObjectTemplate.reverbLevel 1
+ObjectTemplate.minDistance 0.5
+ObjectTemplate.halfVolumeDistance 1
+ObjectTemplate.onlyLoadIfGenericFirearmEquipped 1
+
+ObjectTemplate.activeSafe Sound S_SMG_MP5_Default_Deploy3P
+ObjectTemplate.lowSamples 2147483647
+ObjectTemplate.mediumSamples 2147483647
+ObjectTemplate.soundFilename "Sound\Assault\Weaponry\Handheld\SMG_MP5\SMG_MP5_deploy_1p3p.wav"
+ObjectTemplate.loopCount 1
+ObjectTemplate.is3dSound 1
+ObjectTemplate.stopType 0
+ObjectTemplate.volume 0.7
+ObjectTemplate.pitch 0.98
+ObjectTemplate.reverbLevel 1
+ObjectTemplate.minDistance 0.5
+ObjectTemplate.halfVolumeDistance 1
+
+ObjectTemplate.activeSafe Sound S_SMG_MP5_Default_CriticalShotFire
+ObjectTemplate.modifiedByUser nfe
+ObjectTemplate.soundFilename "Sound\West\Weaponry\Common\Critical\West_SFX_Common_Critical_Shot_Fire_3P.wav"
+ObjectTemplate.loopCount 0
+ObjectTemplate.is3dSound 1
+ObjectTemplate.stopType 1
+ObjectTemplate.volume 0.8
+ObjectTemplate.pitch 1
+ObjectTemplate.reverbLevel 1
+ObjectTemplate.minDistance 3
+ObjectTemplate.halfVolumeDistance 8
+ObjectTemplate.soundRadius 0.5
+
+ObjectTemplate.activeSafe Sound S_SMG_MP5_Default_CriticalShotHit
+ObjectTemplate.lowSamples 2147483647
+ObjectTemplate.mediumSamples 2147483647
+ObjectTemplate.soundFilename "Sound\West\Weaponry\Common\Critical\West_SFX_Common_Critical_Shot_Hit_3P.wav"
+ObjectTemplate.loopCount 0
+ObjectTemplate.is3dSound 0
+ObjectTemplate.stopType 1
+ObjectTemplate.volume 1
+ObjectTemplate.pitch 1
+ObjectTemplate.pan 0.5
+ObjectTemplate.reverbLevel 1
+ObjectTemplate.volumeEnvelope 0/1/0/1/1/1/0/0.9/1/
+ObjectTemplate.minDistance 1.5
+

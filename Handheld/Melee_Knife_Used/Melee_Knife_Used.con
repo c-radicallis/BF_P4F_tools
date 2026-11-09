@@ -1,0 +1,304 @@
+rem Khukri Blade
+rem Weapon CON File for Melee_Knife_Used (3140)
+
+ObjectTemplate.create GenericFireArm Melee_Knife_Used
+ObjectTemplate.assetId 3140
+ObjectTemplate.saveInSeparateFile 1
+ObjectTemplate.weaponsItemType WITKnife
+
+ObjectTemplate.geometry knife_kukri
+
+rem Fallback geometry
+ObjectTemplate.fallbackGeometry 
+ObjectTemplate.fallbackAnimationSystem1p 
+ObjectTemplate.fallbackAnimationSystem3p 
+
+GeometryTemplate.setSubGeometryLodDistance 1 0 5
+GeometryTemplate.setSubGeometryLodDistance 1 1 15
+GeometryTemplate.compressVertexData 1
+GeometryTemplate.maxTextureRepeat 16
+rem GeometryTemplate.hasAdditiveAlpha 1
+rem Animation
+ObjectTemplate.AnimationSystem1p Objects\soldiers\character1p\Animations\Knife_kukri\AnimationSystem1p.inc
+ObjectTemplate.AnimationSystem3p Objects\soldiers\character3p\Animations\Knife_kukri\AnimationSystem3p.inc
+rem ObjectTemplate.AnimationSystem3PFemale FemaleAnimation
+
+ObjectTemplate.createComponent WeaponHud
+ObjectTemplate.weaponHud.weaponIcon Ingame\Weapons\weapon3140.tga
+ObjectTemplate.weaponHud.selectIcon Ingame\Weapons\weapon3140.tga
+ObjectTemplate.weaponHud.notSelectedIcon Ingame\Weapons\weapon3140n.tga
+ObjectTemplate.weaponHud.guiIndex 4
+ObjectTemplate.weaponHud.altGuiIndex 0
+ObjectTemplate.weaponHud.hasRangeFinder 1
+ObjectTemplate.weaponHud.addShowOnCamMode 3
+ObjectTemplate.weaponHud.useCartridgeBar 1
+ObjectTemplate.weaponHud.disableOnSprint 1
+ObjectTemplate.weaponHud.descrString DESCRIPTION_WEAPON_MELEE_KNIFE_USED
+ObjectTemplate.weaponHud.ignoreTargetDistance 1
+ObjectTemplate.weaponHud.hudName "ASSAULT_Custom_Item_3140"
+
+ObjectTemplate.createComponent SingleFireComp
+ObjectTemplate.fire.roundsPerMinute 300
+ObjectTemplate.fire.addFireRate 0
+ObjectTemplate.fire.burstSize 0
+ObjectTemplate.fire.batchSize 1
+ObjectTemplate.fire.projectileStartPositionStand 0/0/0
+ObjectTemplate.fire.projectileStartPositionCrouch 0/0/0
+ObjectTemplate.fire.maxProjectilesInWorld 1
+ObjectTemplate.fire.busyUntilButtonRelease 0
+ObjectTemplate.fire.alwaysFireFromWeapon 0
+ObjectTemplate.fire.fireInCameraDof 1
+ObjectTemplate.fire.fireCompleteDelay 0.3
+ObjectTemplate.fire.fireOnEnable 1
+ObjectTemplate.fire.criticalHitChance 0
+ObjectTemplate.fire.criticalHitDamage 0
+ObjectTemplate.fire.coneEffectDistance 2.25
+ObjectTemplate.fire.coneEffectAngle 0.1
+ObjectTemplate.fire.coneEffectResurrect 0
+ObjectTemplate.fire.coneEffectHeal -1 0
+ObjectTemplate.fire.coneEffectDamage 1 200 
+
+
+ObjectTemplate.createComponent DefaultAmmoComp
+ObjectTemplate.ammo.ammoType 1
+ObjectTemplate.ammo.nrOfMags -1
+ObjectTemplate.ammo.magSize 1
+ObjectTemplate.ammo.reloadAmount 0
+ObjectTemplate.ammo.reloadTime 0.85
+ObjectTemplate.ammo.forceWeaponSwitchWhenNoAmmo 1
+ObjectTemplate.ammo.reloadWithoutPlayer 1
+ObjectTemplate.ammo.autoReload 1
+ObjectTemplate.ammo.toggleWhenNoAmmo 0
+ObjectTemplate.ammo.AllowReplenish 1
+ObjectTemplate.ammo.instantReloadOnEnable 1
+
+ObjectTemplate.createComponent SoldierBasedRecoilComp
+ObjectTemplate.recoil.hasRecoilForce 1
+ObjectTemplate.recoil.goBackOnRecoil 0
+ObjectTemplate.recoil.recoilForceUp CRD_UNIFORM/0.8/0.5/0
+ObjectTemplate.recoil.recoilForceLeftRight CRD_UNIFORM/-0.1/-0.1/0
+ObjectTemplate.recoil.recoilGraphFrameCount 15
+ObjectTemplate.recoil.recoilGraphExponent 6
+ObjectTemplate.recoil.recoilGraphTotalMovement 0
+ObjectTemplate.recoil.zoomModifier 0
+
+ObjectTemplate.createComponent SoldierDeviationComp
+ObjectTemplate.deviation.minDev 0
+ObjectTemplate.deviation.subProjectileDev 0
+ObjectTemplate.deviation.DevModZoom 0
+ObjectTemplate.deviation.minDevModZoom 0
+ObjectTemplate.deviation.setFireDev 0 0 0
+ObjectTemplate.deviation.setTurnDev 0 0 0 0
+ObjectTemplate.deviation.setSpeedDev 0 0 0 0
+ObjectTemplate.deviation.setMiscDev 0 0 0
+ObjectTemplate.deviation.devModStand 0
+ObjectTemplate.deviation.devModCrouch 0
+ObjectTemplate.deviation.syncDev 1
+
+
+ObjectTemplate.createComponent DefaultSoundComp
+ObjectTemplate.createComponent DefaultAnimationComp
+
+
+
+
+ObjectTemplate.createComponent DefaultZoomComp
+
+
+
+
+
+ObjectTemplate.setPosition 0/0/0
+
+
+ObjectTemplate.addTemplate e_shellejection_9mm
+ObjectTemplate.setPosition 0/0/0
+ObjectTemplate.setRotation 0/0/0
+
+ObjectTemplate.projectileTemplate Melee_Knife_Used_Projectile
+ObjectTemplate.keepProjectiles 0
+ObjectTemplate.velocity 900
+ObjectTemplate.itemIndex 1
+ObjectTemplate.altItemIndex 10
+ObjectTemplate.delayToUse 0
+ObjectTemplate.weaponsItemType WITKnife
+ObjectTemplate.allowEmoteAnimation 1
+ObjectTemplate.inheritParentSpeedSoldier 0
+ObjectTemplate.inheritParentSpeedVehicle 1
+ObjectTemplate.isDefaultWeapon 0
+ObjectTemplate.unstealthOnDeploy 0
+
+
+ObjectTemplate.create GenericProjectile Melee_Knife_Used_Projectile
+
+ObjectTemplate.createComponent DefaultCollisionComp
+ObjectTemplate.collision.hasCollisionEffect 1
+
+
+
+ObjectTemplate.createComponent DefaultProjSoundComp
+
+
+
+ObjectTemplate.createComponent DefaultPenetrateComp
+ObjectTemplate.penetrate.allowSolidPenetration 0
+ObjectTemplate.penetrate.allowLiquidPenetration 1
+
+
+ObjectTemplate.gravityModifier 0
+ObjectTemplate.hasMobilePhysics 0
+ObjectTemplate.hasCollisionPhysics 1
+ObjectTemplate.physicsType Point
+ObjectTemplate.collisionGroups 8
+ObjectTemplate.material 38
+
+
+
+ObjectTemplate.timeToLive CRD_NONE/0.1/0/0
+ObjectTemplate.material 38
+ObjectTemplate.hasOnTimeEffect 1
+ObjectTemplate.tracerScaler 60
+ObjectTemplate.maxTracerScaler 0
+ObjectTemplate.minTracerScaler 0
+ObjectTemplate.tracerSizeModifier 0
+ObjectTemplate.tracerTemplate p_tracer2_eu
+ObjectTemplate.tracerConvergeDistance -1
+ObjectTemplate.tracerInterval 0
+ObjectTemplate.localPredictOnClient 1
+ObjectTemplate.initialMinDamage 0
+ObjectTemplate.mediumMinDamage 0
+ObjectTemplate.longMinDamage 0
+ObjectTemplate.initialMaxDamage 0
+ObjectTemplate.mediumMaxDamage 0
+ObjectTemplate.longMaxDamage 0
+ObjectTemplate.mediumDistance 0
+ObjectTemplate.longDistance 0
+ObjectTemplate.damageOwner 1
+ObjectTemplate.activeDefenseEnabled 1
+
+
+
+rem ObjectTemplate.activeSafe Sound S_Melee_Knife_Used_Fire3P
+rem ObjectTemplate.soundFilename "Sound\Assault\Weaponry\Handheld\silence.wav"
+
+ObjectTemplate.activeSafe Sound S_Melee_Knife_Used_Fire1P
+ObjectTemplate.lowSamples 2147483647
+ObjectTemplate.mediumSamples 2147483647
+ObjectTemplate.soundFilename "Sound\Assault\Weaponry\Handheld\silence.wav"
+ObjectTemplate.loopCount 0
+ObjectTemplate.is3dSound 0
+ObjectTemplate.stopType 2
+ObjectTemplate.volume 1
+ObjectTemplate.pitch 1
+ObjectTemplate.reverbLevel 1
+ObjectTemplate.pitchEnvelope 0/1/0.9/1.1/1/1/0/0.97/1.03/
+ObjectTemplate.volumeEnvelope 0/1/0/1/1/1/0/0.9/1/
+ObjectTemplate.position 0/0/0.500329
+ObjectTemplate.minDistance 3
+ObjectTemplate.halfVolumeDistance 8
+ObjectTemplate.soundRadius 0.5
+ObjectTemplate.onlyLoadIfGenericFirearmEquipped 1
+
+ObjectTemplate.activeSafe Sound S_Melee_Knife_Used_Fire3P
+ObjectTemplate.lowSamples 2147483647
+ObjectTemplate.mediumSamples 2147483647
+ObjectTemplate.soundFilename "Sound\Assault\Weaponry\Handheld\silence.wav"
+ObjectTemplate.loopCount 0
+ObjectTemplate.is3dSound 1
+ObjectTemplate.stopType 2
+ObjectTemplate.volume 1
+ObjectTemplate.pitch 1
+ObjectTemplate.reverbLevel 1
+ObjectTemplate.pitchEnvelope 0/1/0.9/1.1/1/1/0/0.97/1.03/
+ObjectTemplate.volumeEnvelope 0/1/0/1/1/1/0/0.9/1/
+ObjectTemplate.position 0/0/0.500329
+ObjectTemplate.minDistance 7
+ObjectTemplate.halfVolumeDistance 30
+ObjectTemplate.soundRadius 0.5
+
+
+
+ObjectTemplate.activeSafe Sound S_Melee_Knife_Used_Reload1P
+ObjectTemplate.lowSamples 2147483647
+ObjectTemplate.mediumSamples 2147483647
+ObjectTemplate.soundFilename "Sound\Assault\Weaponry\Handheld\silence.wav"
+ObjectTemplate.loopCount 0
+ObjectTemplate.is3dSound 0
+ObjectTemplate.stopType 1
+ObjectTemplate.volume 1
+ObjectTemplate.pitch 1
+ObjectTemplate.reverbLevel 1
+ObjectTemplate.position 0/0/0.183854
+ObjectTemplate.minDistance 0.5
+ObjectTemplate.halfVolumeDistance 1
+ObjectTemplate.onlyLoadIfGenericFirearmEquipped 1
+
+ObjectTemplate.activeSafe Sound S_Melee_Knife_Used_Reload3P
+ObjectTemplate.lowSamples 2147483647
+ObjectTemplate.mediumSamples 2147483647
+ObjectTemplate.soundFilename "Sound\Assault\Weaponry\Handheld\silence.wav"
+ObjectTemplate.loopCount 0
+ObjectTemplate.is3dSound 1
+ObjectTemplate.stopType 1
+ObjectTemplate.volume 1
+ObjectTemplate.pitch 1
+ObjectTemplate.reverbLevel 1
+ObjectTemplate.position 0/0/0.183854
+ObjectTemplate.minDistance 0.5
+ObjectTemplate.halfVolumeDistance 1
+
+
+ObjectTemplate.activeSafe Sound S_Melee_Knife_Used_Deploy1P
+ObjectTemplate.lowSamples 2147483647
+ObjectTemplate.mediumSamples 2147483647
+ObjectTemplate.soundFilename "Sound\Assault\Weaponry\Handheld\MELEE_KNIFE\MELEE_KNIFE_swing1p3p_01.wav"
+ObjectTemplate.loopCount 1
+ObjectTemplate.is3dSound 0
+ObjectTemplate.stopType 0
+ObjectTemplate.volume 0.7
+ObjectTemplate.pitch 0.98
+ObjectTemplate.reverbLevel 1
+ObjectTemplate.minDistance 0.5
+ObjectTemplate.halfVolumeDistance 1
+ObjectTemplate.onlyLoadIfGenericFirearmEquipped 1
+
+ObjectTemplate.activeSafe Sound S_Melee_Knife_Used_Deploy3P
+ObjectTemplate.lowSamples 2147483647
+ObjectTemplate.mediumSamples 2147483647
+ObjectTemplate.soundFilename "Sound\Assault\Weaponry\Handheld\MELEE_KNIFE\MELEE_KNIFE_swing1p3p_02.wav"
+ObjectTemplate.loopCount 1
+ObjectTemplate.is3dSound 1
+ObjectTemplate.stopType 0
+ObjectTemplate.volume 0.7
+ObjectTemplate.pitch 0.98
+ObjectTemplate.reverbLevel 1
+ObjectTemplate.minDistance 0.5
+ObjectTemplate.halfVolumeDistance 1
+
+ObjectTemplate.activeSafe Sound S_Melee_Knife_Used_CriticalShotFire
+ObjectTemplate.modifiedByUser nfe
+ObjectTemplate.soundFilename "Sound\West\Weaponry\Common\Critical\West_SFX_Common_Critical_Shot_Fire_3P.wav"
+ObjectTemplate.loopCount 0
+ObjectTemplate.is3dSound 1
+ObjectTemplate.stopType 1
+ObjectTemplate.volume 0.8
+ObjectTemplate.pitch 1
+ObjectTemplate.reverbLevel 1
+ObjectTemplate.minDistance 3
+ObjectTemplate.halfVolumeDistance 8
+ObjectTemplate.soundRadius 0.5
+
+ObjectTemplate.activeSafe Sound S_Melee_Knife_Used_CriticalShotHit
+ObjectTemplate.lowSamples 2147483647
+ObjectTemplate.mediumSamples 2147483647
+ObjectTemplate.soundFilename "Sound\West\Weaponry\Common\Critical\West_SFX_Common_Critical_Shot_Hit_3P.wav"
+ObjectTemplate.loopCount 0
+ObjectTemplate.is3dSound 0
+ObjectTemplate.stopType 1
+ObjectTemplate.volume 1
+ObjectTemplate.pitch 1
+ObjectTemplate.pan 0.5
+ObjectTemplate.reverbLevel 1
+ObjectTemplate.volumeEnvelope 0/1/0/1/1/1/0/0.9/1/
+ObjectTemplate.minDistance 1.5
+
