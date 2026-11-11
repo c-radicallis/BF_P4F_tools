@@ -1,4 +1,3 @@
-
 from pathlib import Path
 import re
 import matplotlib.pyplot as plt
@@ -19,7 +18,7 @@ ATTACHMENTS = {
     "Srifle_SKS.con": [
         Path("WeaponGear/Ammo_SR_12/Ammo_SR_12.con"),
         Path("WeaponGear/Barrel_SR_07/Barrel_SR_07.con"),
-        #Path("WeaponGear/Stock_SR_08/Stock_SR_08.con"),
+        Path("WeaponGear/Stock_SR_08/Stock_SR_08.con"),
     ],
 }
 
@@ -302,13 +301,13 @@ def generate_report(FILE, stats, suffix="", attachment_names=None):
 
     ax2 = fig.add_subplot(gs[0, 1])
     ax2.axis("off")
-    ax2.set_title("General Statistics")
+#    ax2.set_title("General Statistics")
 
     main_stats = [
         ("Fire rate", f"{display(rpm)} RPM"),
         ("Projectile velocity", f"{display(velocity)} m/s"),
         ("Magazine capacity", display(mag)),
-        ("Number of magazines", display(mags)),
+        #("Number of magazines", display(mags)),
         ("Total ammunition", display(mag * mags)),
         ("Reload time", f"{display(reload)} s"),
         ("Time between shots", f"{60/rpm:.4f} s" if rpm else "N/A"),
@@ -333,7 +332,7 @@ def generate_report(FILE, stats, suffix="", attachment_names=None):
 
     ax3 = fig.add_subplot(gs[1, 0])
     ax3.axis("off")
-    ax3.set_title("Recoil Characteristics (ADS)")
+#    ax3.set_title("Recoil Characteristics (ADS)")
 
     zoom_modifier = number("recoil.zoomModifier")
 
@@ -353,25 +352,25 @@ def generate_report(FILE, stats, suffix="", attachment_names=None):
         except (ValueError, TypeError):
             return "N/A"
 
-    recoil_keys = [
-        "recoil.hasRecoilForce",
-        "recoil.goBackOnRecoil",
-        "recoil.recoilForceUp",
-        "recoil.recoilForceLeftRight",
-        "recoil.recoilGraphFrameCount",
-        "recoil.recoilGraphExponent",
-        "recoil.recoilGraphTotalMovement",
-    ]
+    # recoil_keys = [
+    #     "recoil.hasRecoilForce",
+    #     "recoil.goBackOnRecoil",
+    #     "recoil.recoilForceUp",
+    #     "recoil.recoilForceLeftRight",
+    #     "recoil.recoilGraphFrameCount",
+    #     "recoil.recoilGraphExponent",
+    #     "recoil.recoilGraphTotalMovement",
+    # ]
 
-    recoil_data = [
-        (k.split(".")[-1], clean_value(get(k, "N/A")))
-        for k in recoil_keys
-    ]
+    # recoil_data = [
+    #     (k.split(".")[-1], clean_value(get(k, "N/A")))
+    #     for k in recoil_keys
+    # ]
 
-    recoil_data.extend([
+    recoil_data=[
         ("ADS recoil up", calculate_ads_recoil("recoil.recoilForceUp")),
         ("ADS recoil left/right", calculate_ads_recoil("recoil.recoilForceLeftRight")),
-    ])
+    ]
 
     table = ax3.table(
         cellText=recoil_data,
@@ -392,7 +391,7 @@ def generate_report(FILE, stats, suffix="", attachment_names=None):
 
     ax4 = fig.add_subplot(gs[1, 1])
     ax4.axis("off")
-    ax4.set_title("Accuracy / Deviation Characteristics")
+#    ax4.set_title("Accuracy / Deviation Characteristics")
 
     deviation_keys = [
         "deviation.minDev",
@@ -400,12 +399,12 @@ def generate_report(FILE, stats, suffix="", attachment_names=None):
         "deviation.DevModZoom",
         "deviation.minDevModZoom",
         "deviation.setFireDev",
-        "deviation.setTurnDev",
-        "deviation.setSpeedDev",
-        "deviation.setMiscDev",
+#        "deviation.setTurnDev",
+#        "deviation.setSpeedDev",
+#        "deviation.setMiscDev",
         "deviation.devModStand",
         "deviation.devModCrouch",
-        "deviation.syncDev",
+#        "deviation.syncDev",
     ]
 
     deviation_data = [
