@@ -131,34 +131,56 @@ def discover_weapons():
     return weapons
 
 
+def attachment_code_for_weapon_type(weapon_type):
+    aliases = {
+        "Srifle": "SR",
+    }
+    return aliases.get(weapon_type, weapon_type).upper()
+
+
 def discover_attachments():
     attachments = {"Barrel": {}, "Ammo": {}, "Stock": {}}
+
     if not WEAPON_GEAR_DIR.is_dir():
         return attachments
 
     for filename in sorted(WEAPON_GEAR_DIR.rglob("*.con")):
-        # Attachment category is determined by the containing folder name.
-        folder_name = filename.parent.name
-        category = folder_name.split("_", 1)[0]
-        category_map = {"Barrel": "Barrel", "Ammo": "Ammo", "Stock": "Stock"}
-        if category not in category_map:
+        # Folder format: Barrel_SR_07, Ammo_LMG_11, Stock_AR_02
+        parts = filename.parent.name.split("_")
+
+        if len(parts) < 2:
             continue
-        category = category_map[category]
+
+        category, weapon_code = parts[0], parts[1].upper()
+
+        if category not in attachments:
+            continue
+
         try:
             _, description = parse_attachment(filename)
         except OSError:
             continue
-        attachments[category].setdefault(description, []).append(filename)
 
-    # If two files have the same description, make each menu entry unambiguous.
+        attachments[category].setdefault(weapon_code, {}).setdefault(
+            description, []
+        ).append(filename)
+
+    # Build menus using attachment descriptions
     result = {category: {} for category in attachments}
-    for category, entries in attachments.items():
-        for description, files in entries.items():
-            for filename in files:
-                label = description if len(files) == 1 else f"{description} ({filename.parent.name})"
-                result[category][label] = filename
-    return result
 
+    for category, weapon_groups in attachments.items():
+        for weapon_code, entries in weapon_groups.items():
+            result[category][weapon_code] = {}
+
+            for description, files in entries.items():
+                for filename in files:
+                    label = (
+                        description if len(files) == 1
+                        else f"{description} ({filename.parent.name})"
+                    )
+                    result[category][weapon_code][label] = filename
+
+    return result
 
 # --------------------------------------------------
 # Formatting and comparison data
@@ -303,7 +325,7 @@ class WeaponComparisonApp:
                 ttk.Label(frame, text=category).grid(row=row, column=0, sticky="w", padx=4, pady=3)
                 box = ttk.Combobox(
                     frame, state="readonly", width=28,
-                    values=[NO_ATTACHMENT] + list(self.attachments[category])
+                    values=[NO_ATTACHMENT]
                 )
                 box.current(0)
                 box.grid(row=row, column=1, sticky="ew", padx=4, pady=3)
@@ -346,12 +368,38 @@ class WeaponComparisonApp:
         weapon_type = controls["type"].get()
         options = self.weapons.get(weapon_type, [])
         labels = [item["name"] for item in options]
+
         controls["weapon"]["values"] = labels
+
         if labels:
             controls["weapon"].current(0)
+
+        self.update_attachment_options(index)
+
         if refresh:
             self.refresh_all()
 
+
+    def update_attachment_options(self, index):
+        controls = self.weapon_controls[index]
+        weapon_code = attachment_code_for_weapon_type(
+            controls["type"].get()
+        )
+
+        for category in ("Barrel", "Ammo", "Stock"):
+            available = self.attachments[category].get(weapon_code, {})
+            values = [NO_ATTACHMENT] + list(available)
+
+            box = controls[category]
+            previous = box.get()
+
+            box["values"] = values
+
+            if previous in values:
+                box.set(previous)
+            else:
+                box.current(0)
+                
     def selected_weapon(self, index):
         controls = self.weapon_controls[index]
         selected_name = controls["weapon"].get()
@@ -369,11 +417,26 @@ class WeaponComparisonApp:
         stats = parse_con(weapon["file"])
         controls = self.weapon_controls[index]
         chosen = []
+
+        weapon_code = attachment_code_for_weapon_type(
+            controls["type"].get()
+        )
+
         for category in ("Barrel", "Ammo", "Stock"):
             label = controls[category].get()
-            filename = self.attachments[category].get(label) if label != NO_ATTACHMENT else None
+
+            category_options = self.attachments[category].get(
+                weapon_code, {}
+            )
+
+            filename = (
+                category_options.get(label)
+                if label != NO_ATTACHMENT else None
+            )
+
             if filename:
                 chosen.append(filename)
+
         stats = apply_attachments(stats, chosen)
         attachment_labels = [
             controls[category].get()
