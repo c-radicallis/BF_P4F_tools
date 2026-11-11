@@ -9,17 +9,17 @@ import matplotlib.pyplot as plt
 
 BATCH_MODE = False  # True = all .con files; False = single file
 
-FILE = Path("Handheld/Pistol_DEagle_Default/Pistol_DEagle_Default.con")
+FILE = Path("Handheld/Srifle_SKS/Srifle_SKS.con")
 
 OUTPUT_DIR = Path("Weapon_Stats")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 # Attachments assigned to each weapon
 ATTACHMENTS = {
-    "SMG_PP2000_Default.con": [
-        Path("Ammo_SMG/Ammo_SMG_11.con"),
-        Path("WeaponGear/Barrel_SMG_01/Barrel_SMG_01.con"),
-        Path("WeaponGear/Stock_SMG_04/Stock_SMG_04.con"),
+    "Srifle_SKS.con": [
+        Path("WeaponGear/Ammo_SR_12/Ammo_SR_12.con"),
+        Path("WeaponGear/Barrel_SR_07/Barrel_SR_07.con"),
+        #Path("WeaponGear/Stock_SR_08/Stock_SR_08.con"),
     ],
 }
 
@@ -282,7 +282,7 @@ def generate_report(FILE, stats, suffix="", attachment_names=None):
     ax1.set_title("Damage vs Distance")
     ax1.set_xlabel("Distance (m)")
     ax1.set_ylabel("Damage")
-    ax1.set_xlim(0, end_distance)
+    ax1.set_xlim(0, 100)
     ax1.set_ylim(bottom=0)
     ax1.grid(True, alpha=0.3)
     ax1.legend()
