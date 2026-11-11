@@ -278,7 +278,7 @@ class WeaponComparisonApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Battlefield Play4Free - Weapon Comparison")
-        self.root.geometry("1250x900")
+        self.root.geometry("1600x900")
         self.weapons = discover_weapons()
         self.attachments = discover_attachments()
         self.weapon_controls = []
@@ -459,16 +459,42 @@ class WeaponComparisonApp:
 
     def update_plot(self, stats1, stats2, title1, title2):
         self.ax.clear()
-        for stats, title, style in (
-            (stats1, title1, "-"),
-            (stats2, title2, "--"),
+
+        for stats, title, style, colour in (
+            (stats1, title1, "-", "tab:blue"),
+            (stats2, title2, "--", "tab:orange"),
         ):
-            x, ymin, ymax = damage_data(stats)
-            self.ax.fill_between(x, ymin, ymax, step="post", alpha=0.12)
-            self.ax.step(x, ymax, where="post", linestyle=style, linewidth=2,
-                         label=f"{title} - Max")
-            self.ax.step(x, ymin, where="post", linestyle=style, linewidth=2,
-                         label=f"{title} - Min")
+            distances, damage_min, damage_max = damage_data(stats)
+
+            self.ax.fill_between(
+                distances, damage_min, damage_max,
+                step="post", alpha=0.12, color=colour
+            )
+
+            self.ax.step(
+                distances, damage_max, where="post",
+                linestyle=style, linewidth=2, color=colour,
+                label=f"{title}"
+            )
+
+            self.ax.step(
+                distances, damage_min, where="post",
+                linestyle=style, linewidth=2, color=colour#,
+                #label=f"{title} - Min"
+            )
+
+            # Annotate damage ranges
+            for d, dmin, dmax in zip(
+                distances[:-1], damage_min[:-1], damage_max[:-1]
+            ):
+                self.ax.annotate(
+                    f"{dmin:g}–{dmax:g}",
+                    (d, dmax),
+                    xytext=(5, 5),
+                    textcoords="offset points",
+                    fontsize=8
+                )
+
         self.ax.set_title("Damage vs Range")
         self.ax.set_xlabel("Range (m)")
         self.ax.set_ylabel("Damage")
@@ -476,6 +502,7 @@ class WeaponComparisonApp:
         self.ax.set_ylim(bottom=0)
         self.ax.grid(True, alpha=0.3)
         self.ax.legend(fontsize=8)
+        self.ax.set_xticks(range(0, int(self.ax.get_xlim()[1]) + 1, 5))
         self.canvas.draw_idle()
 
     def update_table(self, stats1, stats2):
